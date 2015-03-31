@@ -66,9 +66,12 @@ int main(int argc, char* argv[])
 	uint32_t route_server_count = 0;
 	serv_info_t* route_server_list = read_server_config(&config_file, "RouteServerIP", "RouteServerPort", route_server_count);
 
-    uint32_t push_server_count = 0;
-    serv_info_t* push_server_list = read_server_config(&config_file, "PushServerIP",
-                                                       "PushServerPort", push_server_count);
+	/**
+	 * remove push_server
+	 */
+//    uint32_t push_server_count = 0;
+//    serv_info_t* push_server_list = read_server_config(&config_file, "PushServerIP",
+//                                                       "PushServerPort", push_server_count);
     
     uint32_t file_server_count = 0;
     serv_info_t* file_server_list = read_server_config(&config_file, "FileServerIP",
@@ -142,7 +145,10 @@ int main(int argc, char* argv[])
 
 	init_route_serv_conn(route_server_list, route_server_count);
 
-    init_push_serv_conn(push_server_list, push_server_count);
+	/**
+	 * remove push server
+	 */
+//    init_push_serv_conn(push_server_list, push_server_count);
 	printf("now enter the event loop...\n");
     
     writePid();
